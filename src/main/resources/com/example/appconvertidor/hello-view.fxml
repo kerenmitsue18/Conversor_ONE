@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.GridPane?>
+
+
+<?import javafx.scene.layout.AnchorPane?>
+<AnchorPane prefHeight="300" prefWidth="200" fx:controller="com.example.appconvertidor.HelloController" xmlns:fx="http://javafx.com/fxml">
+    <children>
+        <Label fx:id="title" text="CONVERTER" layoutX="90" layoutY="20" prefWidth="120" alignment="CENTER"> </Label>
+    </children>
+    <children>
+        <Button fx:id="currency" text="Currency" layoutX="90" layoutY="70" prefWidth="120" onAction="#type"></Button>
+        <Button fx:id="temperature" text="Temperature" layoutX="90" layoutY="110" prefWidth="120" onAction="#type"></Button>
+        <Button fx:id="data" text="Data" layoutX="90" layoutY="150" prefWidth="120" onAction="#type"></Button>
+        <Button fx:id="Time" text="Time" layoutX="90" layoutY="190" prefWidth="120" onAction="#type"></Button>
+    </children>
+    <children>
+        <Label text="By Keren Mitsue" layoutX="90" layoutY="260" prefWidth="120" alignment="CENTER"> </Label>
+    </children>
+
+</AnchorPane>
