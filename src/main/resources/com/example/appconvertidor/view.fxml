@@ -18,24 +18,25 @@
 
     <Group>
         <Label fx:id="txtType" layoutX="90" layoutY="70" prefWidth="150" alignment="CENTER"></Label>
-        <ChoiceBox fx:id="choiceOne" layoutX="230" layoutY="70"  prefWidth="150" onAction="#convert"></ChoiceBox>
+        <ChoiceBox fx:id="choiceOne" layoutX="230" layoutY="70"  prefWidth="150" ></ChoiceBox>
 
         <children>
             <Label fx:id= "txtValue" layoutX="90" layoutY="110" prefWidth="150" alignment="CENTER"
             ></Label>
-            <TextField fx:id="input" text="1" layoutX="230" layoutY="110" prefWidth="150" onKeyTyped="#convert"></TextField>
+            <TextField fx:id="input" text="1" layoutX="230" layoutY="110" prefWidth="150" ></TextField>
         </children>
         <children>
             <Label text="Convert to:" layoutX="90" layoutY="150"
                    prefWidth="150" alignment="CENTER"
             ></Label>
-            <ChoiceBox fx:id="choiceTwo" layoutX="230" layoutY="150"  prefWidth="150" onAction="#convert"></ChoiceBox>
+            <ChoiceBox fx:id="choiceTwo" layoutX="230" layoutY="150"  prefWidth="150" ></ChoiceBox>
             <Label text="Result:" layoutX="90" layoutY="190" prefWidth="150" alignment="CENTER" ></Label>
             <TextField fx:id="result"  layoutX="230" layoutY="190" editable="false"></TextField>
         </children>
 
     </Group>
-    <Button fx:id="btnConvert" text="Back" layoutX="230" layoutY="230" prefWidth="120" onAction="#back"></Button>
+    <Button fx:id="btnConvert" text="convert" layoutX="260" layoutY="230" prefWidth="120" onAction="#convert"></Button>
+    <Button fx:id="btnBack" text="Back" layoutX="130" layoutY="230" prefWidth="120" onAction="#back"></Button>
     <children>
         <Label text="By Keren Mitsue" layoutX="230" layoutY="260" prefWidth="200" alignment="CENTER"> </Label>
     </children>

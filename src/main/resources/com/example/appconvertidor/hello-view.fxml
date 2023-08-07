@@ -17,7 +17,7 @@
         <Button fx:id="currency" text="Currency" layoutX="90" layoutY="70" prefWidth="120" onAction="#type"></Button>
         <Button fx:id="temperature" text="Temperature" layoutX="90" layoutY="110" prefWidth="120" onAction="#type"></Button>
         <Button fx:id="data" text="Data" layoutX="90" layoutY="150" prefWidth="120" onAction="#type"></Button>
-        <Button fx:id="Time" text="Time" layoutX="90" layoutY="190" prefWidth="120" onAction="#type"></Button>
+        <Button fx:id="Time" text="Time" layoutX="90" layoutY="190" prefWidth="120" onAction="#type"/>
     </children>
     <children>
         <Label text="By Keren Mitsue" layoutX="90" layoutY="260" prefWidth="120" alignment="CENTER"> </Label>

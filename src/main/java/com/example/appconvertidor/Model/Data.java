@@ -1,10 +1,9 @@
 package com.example.appconvertidor.Model;
 
-public class Data implements Converter{
-
-
-    @Override
-    public Double converter(double value, Unit from, Unit to) {
-        return null;
+public class Data extends Convert{
+    public Data(String key, String name) {
+        super( key, name );
     }
+
+
 }

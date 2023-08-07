@@ -1,7 +1,8 @@
 package com.example.appconvertidor;
 
 import com.example.appconvertidor.Filter.DecimalFilter;
-import com.example.appconvertidor.Model.Currency;
+import com.example.appconvertidor.Model.ConversorAPI;
+import com.example.appconvertidor.Model.Convert;
 import com.example.appconvertidor.Model.Temperature;
 import com.example.appconvertidor.Model.Unit;
 import javafx.collections.FXCollections;
@@ -10,10 +11,11 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.util.converter.DoubleStringConverter;
 
-import java.net.Proxy;
+
+import java.io.IOException;
 import java.text.DecimalFormat;
-import java.util.ListIterator;
-import java.util.function.UnaryOperator;
+import java.util.ArrayList;
+
 
 public class ViewController {
     @FXML
@@ -23,9 +25,9 @@ public class ViewController {
     @FXML
     Label txtValue;
     @FXML
-    ChoiceBox<Unit> choiceOne;
+    ChoiceBox<Convert> choiceOne;
     @FXML
-    ChoiceBox<Unit> choiceTwo;
+    ChoiceBox<Convert> choiceTwo;
 
     @FXML
     TextField result;
@@ -36,9 +38,6 @@ public class ViewController {
     Button btnConvert;
 
     String type;
-    Currency currency = new Currency();
-
-
 
     public void init(String type){
         this.type = type;
@@ -50,21 +49,29 @@ public class ViewController {
         DecimalFormat decimalFormat = new DecimalFormat("#.##");
         TextFormatter<Double> textFormatter = new TextFormatter<>(new DoubleStringConverter(), 0.00, new DecimalFilter() );
         input.setTextFormatter(textFormatter);
-        result.setTextFormatter(textFormatter);
-
+        //result.setTextFormatter(textFormatter);
 
     }
     public void typeConvert(String type) {
 
         init(type);
 
-        switch (this.type){
+        switch (type){
             case "Currency":
-                choiceOne.setItems( FXCollections.observableArrayList(currency.getUnits()) );
-                choiceTwo.setItems( FXCollections.observableArrayList(currency.getUnits()) );
+                ArrayList<Unit> currency = Unit.getCurrency();
+                choiceOne.setItems( FXCollections.observableArrayList(currency) );
+                choiceTwo.setItems( FXCollections.observableArrayList(currency) );
+                //valores por defecto
+                choiceOne.getSelectionModel().select(1);
+                choiceTwo.getSelectionModel().select(13);
                 break;
             case "Temperature":
-
+                ArrayList<Temperature> temperature = Temperature.getTemperature();
+                choiceOne.setItems( FXCollections.observableArrayList(temperature) );
+                choiceTwo.setItems( FXCollections.observableArrayList(temperature) );
+                //valores por defecto
+                choiceOne.getSelectionModel().select(0);
+                choiceTwo.getSelectionModel().select(1);
                 break;
             case "Data":
                break;
@@ -72,36 +79,49 @@ public class ViewController {
                 break;
         }
 
-        //valores por defecto
-        choiceOne.getSelectionModel().select(0);
-        choiceTwo.getSelectionModel().select(1);
+
     }
 
     public void convert(ActionEvent actionEvent) {
 
-        //obtener valores de los componentes
-
-         String to = choiceTwo.getValue().toString();
-         Double value = Double.valueOf( input.getText() );
-
-
+         //obtener valores de los componentes
+         Double value = Double.valueOf( input.getText().toString() );
+         String from = choiceOne.getValue().getKey();
+         String to = choiceTwo.getValue().getKey();
+         String  value_result = "";
 
         switch (this.type){
             case "Currency":
-                currency.converter( value,choiceOne.getValue(),choiceTwo.getValue());
+                try {
+                     value_result = ConversorAPI.url( value,from,to );
+                    result.setText( value_result );
+                } catch (IOException e) {
+                    throw new RuntimeException( e );
+                }
                 break;
             case "Temperature":
+                value_result = String.valueOf( Temperature.computeTemperature( value,
+                        (Temperature) choiceOne.getValue(), (Temperature) choiceTwo.getValue() ) );
+                result.setText( value_result );
                 break;
             case "Data":
                 break;
             case "Time":
                 break;
 
+            default:
+                throw new IllegalStateException( "Unexpected value: " + this.type );
         }
 
     }
 
+
     public void back(ActionEvent actionEvent) {
 
     }
+    
+
+
+
+
 }

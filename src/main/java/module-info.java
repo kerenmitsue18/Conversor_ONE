@@ -10,6 +10,8 @@ module com.example.appconvertidor {
     requires org.kordamp.bootstrapfx.core;
     requires com.almasb.fxgl.all;
     requires annotations;
+    requires okhttp3;
+    requires json.simple;
 
     opens com.example.appconvertidor to javafx.fxml;
     exports com.example.appconvertidor;

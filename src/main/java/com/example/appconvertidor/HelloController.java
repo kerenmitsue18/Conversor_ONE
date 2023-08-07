@@ -9,9 +9,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import org.jetbrains.annotations.NotNull;
 
@@ -48,7 +45,9 @@ public class HelloController {
 
 
         if(event.getTarget().equals( currency )){
+            System.out.println("Ventana de convertidor de moneda");
             viewController.typeConvert("Currency");
+
         } else if (event.getTarget().equals( temperature )) {
             viewController.typeConvert("Temperature");
         } else if (event.getTarget().equals( data )) {
