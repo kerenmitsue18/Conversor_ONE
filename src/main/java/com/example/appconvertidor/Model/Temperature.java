@@ -8,7 +8,7 @@ public class Temperature extends Convert{
         super(key,name);
     }
 
-    public static Double computeTemperature(Double value, Temperature from, Temperature to){
+    public static Double compute(Double value, Convert from, Convert to){
         Double result = 0.0;
 
         if(from.getKey().equals("°C") &  to.getKey().equals( "°K" ))

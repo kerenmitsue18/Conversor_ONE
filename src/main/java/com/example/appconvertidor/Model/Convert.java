@@ -31,4 +31,8 @@ public abstract class Convert {
     public String toString() {
         return key + " - " + name;
     }
+
+    public static Double compute(Double value, Convert from, Convert to){
+        return 0.0;
+    }
 }

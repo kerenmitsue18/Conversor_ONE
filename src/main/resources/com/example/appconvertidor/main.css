@@ -1,12 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Kalam:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Atma:wght@300&display=swap');
 .root{
     -fx-font-size: 12px;
     -fx-background-color: linear-gradient(#F3F0F3,#F3F0F3);
 }
 #title{
-     -fx-font-size: 18px;
+     -fx-font-size: 25px;
      -fx-font-weight: bold;
      -fx-text-fill: #333333;
      -fx-text-align: "center";
+     -fx-font-family: 'Atma', cursive;
 }
 
 .button{
@@ -15,6 +18,9 @@
     -fx-background-radius: 30;
     -fx-background-insets: 0;
     -fx-text-fill: white;
+    -fx-font-family: 'Parishioner';
+    -fx-cursor: hand;
+
 }
 
 

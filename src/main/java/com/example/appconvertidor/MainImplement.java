@@ -14,7 +14,7 @@ public class MainImplement extends Application {
     public void start(Stage primaryStage) throws IOException {
 
         primaryStage.setTitle("Convertidor");
-        Parent root = FXMLLoader.load( getClass().getResource( "hello-view.fxml"));
+        Parent root = FXMLLoader.load( getClass().getResource( "mainConverter.fxml"));
         Scene scence = new Scene(root,300,300);
         scence.getStylesheets().add(getClass().getResource( "main.css" ).toExternalForm());
 

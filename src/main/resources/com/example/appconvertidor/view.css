@@ -1,12 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Atma:wght@300&display=swap');
+
 .root1{
     -fx-font-size: 12px;
     -fx-background-color: linear-gradient(#F3F0F3,#F3F0F3);
+    font-family: 'Atma', cursive;
 }
 
 
 #title{
-    -fx-font-size: 18px;
+    -fx-font-size: 20px;
      -fx-font-weight: bold;
      -fx-text-fill: #333333;
-     -fx-text-align: "center";
+     -fx-alignment: center;
+
+}
+
+Label{
+     -fx-font-size: 14px;
+     -fx-alignment: baseline-left;
+}
+
+Button{
+    -fx-font-size: 16px;
+    -fx-background-color: linear-gradient(#667894,#667894);
+    -fx-background-radius: 30;
+    -fx-background-insets: 0;
+    -fx-text-fill: white;
+    -fx-cursor: hand;
+}
+
+ChoiceBox{
+    -fx-border-color: #667894;
+    -fx-border-width: 0.5px;
+    -fx-background-color: transparent;
+    -fx-border-radius: 50px;
+}
+
+ChoiceBox:hover{
+    -fx-text-fill: white;
+}
+
+ChoiceBox .list{
+    -fx-border-color:#667894;
+    -fx-font-weight:700;
+}
+
+ChoiceBox:focused {
+    -fx-box-border: transparent; /* Elimina el resaltado interior */
+    -fx-background-color: transparent; /* Elimina el color de fondo */
+    -fx-background-insets: 0; /* Elimina el espacio de fondo */
+}
+TextField{
+    -fx-focus-color: #667894;
+}
+
+#result{
+    -fx-font-weight: bold;
+    -fx-font-size: 16px;
+    -fx-background-color: linear-gradient(#F3F0F3,#F3F0F3);
+    -fx-text-fill: #00598E; /* Cambia a tu color deseado */
+}
+#result:focused{
+    -fx-box-border: transparent; /* Elimina el resaltado interior */
+    -fx-background-color: transparent; /* Elimina el color de fondo */
+    -fx-background-insets: 0; /* Elimina el espacio de fondo */
 }

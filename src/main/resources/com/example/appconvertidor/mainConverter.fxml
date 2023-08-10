@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="300" prefWidth="200" fx:controller="com.example.appconvertidor.MainConverter" xmlns:fx="http://javafx.com/fxml">
+    <children>
+        <Label fx:id="title" text="CONVERTER" layoutX="0" layoutY="30" prefWidth="300" alignment="CENTER"> </Label>
+    </children>
+    <children>
+        <Button fx:id="currency" text="Currency" layoutX="85" layoutY="90" prefWidth="130" onAction="#type"></Button>
+        <Button fx:id="temperature" text="Temperature" layoutX="85" layoutY="140" prefWidth="130" onAction="#type"></Button>
+        <Button fx:id="data" text="Data" layoutX="85" layoutY="190" prefWidth="130" onAction="#type"></Button>
+    </children>
+    <children>
+        <Label text="By Keren Mitsue" layoutX="85" layoutY="260" prefWidth="140" alignment="CENTER"> </Label>
+    </children>
+
+</AnchorPane>

@@ -1,19 +1,13 @@
 package com.example.appconvertidor;
 
-import com.example.appconvertidor.Filter.DecimalFilter;
-import com.example.appconvertidor.Model.ConversorAPI;
-import com.example.appconvertidor.Model.Convert;
-import com.example.appconvertidor.Model.Temperature;
-import com.example.appconvertidor.Model.Unit;
+import com.example.appconvertidor.Model.*;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.util.converter.DoubleStringConverter;
 
 
 import java.io.IOException;
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 
@@ -39,22 +33,12 @@ public class ViewController {
 
     String type;
 
-    public void init(String type){
+    public void getTypeConvert(String type) {
+
         this.type = type;
         title.setText(type + " Converter");
-        txtType.setText( "Type of " + type.toLowerCase() + ":");
-        txtValue.setText( "Value of " + type.toLowerCase() + ":" );
-
-        //Formato a los valores
-        DecimalFormat decimalFormat = new DecimalFormat("#.##");
-        TextFormatter<Double> textFormatter = new TextFormatter<>(new DoubleStringConverter(), 0.00, new DecimalFilter() );
-        input.setTextFormatter(textFormatter);
-        //result.setTextFormatter(textFormatter);
-
-    }
-    public void typeConvert(String type) {
-
-        init(type);
+        txtType.setText( "Type " + type.toLowerCase() + ":");
+        txtValue.setText( "Value " + type.toLowerCase() + ":" );
 
         switch (type){
             case "Currency":
@@ -74,6 +58,11 @@ public class ViewController {
                 choiceTwo.getSelectionModel().select(1);
                 break;
             case "Data":
+                ArrayList<Data> data = Data.getData();
+                choiceOne.setItems( FXCollections.observableArrayList(data) );
+                choiceTwo.setItems( FXCollections.observableArrayList(data) );
+                choiceOne.getSelectionModel().select(0);
+                choiceTwo.getSelectionModel().select(1);
                break;
             case "Time":
                 break;
@@ -94,17 +83,16 @@ public class ViewController {
             case "Currency":
                 try {
                      value_result = ConversorAPI.url( value,from,to );
-                    result.setText( value_result );
                 } catch (IOException e) {
                     throw new RuntimeException( e );
                 }
                 break;
             case "Temperature":
-                value_result = String.valueOf( Temperature.computeTemperature( value,
+                value_result = String.valueOf( Temperature.compute( value,
                         (Temperature) choiceOne.getValue(), (Temperature) choiceTwo.getValue() ) );
-                result.setText( value_result );
                 break;
             case "Data":
+                value_result = String.valueOf( Data.compute( value,(Data) choiceOne.getValue(),(Data) choiceTwo.getValue() ) );
                 break;
             case "Time":
                 break;
@@ -112,6 +100,7 @@ public class ViewController {
             default:
                 throw new IllegalStateException( "Unexpected value: " + this.type );
         }
+        result.setText( value_result );
 
     }
 
